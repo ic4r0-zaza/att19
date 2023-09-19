@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopots</title>
+</head>
+<body>
+    <!-- Tela Inicial -->
+    <div id="tela-inicial">
+        <h1>Bem-vindo ao Stopots!</h1>
+        <label for="nome-jogador">Digite seu nome:</label>
+        <input type="text" id="nome-jogador">
+        <button onclick="iniciarJogo()">Iniciar Jogo</button>
+    </div>
+
+    <!-- Tela de Confirmação -->
+    <div id="tela-confirmacao" style="display: none;">
+        <h2>O jogador a seguir entrou no jogo:</h2>
+        <p id="nome-confirmacao"></p>
+    </div>
+
+    <script>
+        // Função para iniciar o jogo
+        function iniciarJogo() {
+            // Obter o nome digitado pelo jogador
+            const nomeJogador = document.getElementById("nome-jogador").value;
+
+            // Verificar se o nome foi digitado
+            if (nomeJogador.trim() === "") {
+                alert("Por favor, digite seu nome antes de iniciar o jogo.");
+                return;
+            }
+
+            // Esconder a tela inicial
+            document.getElementById("tela-inicial").style.display = "none";
+
+            // Exibir a tela de confirmação com o nome do jogador
+            document.getElementById("tela-confirmacao").style.display = "block";
+            document.getElementById("nome-confirmacao").textContent = nomeJogador;
+
+            // Armazenar o nome do jogador na sessão
+            sessionStorage.setItem("nomeJogador", nomeJogador);
+        }
+    </script>
+</body>
+</html>
